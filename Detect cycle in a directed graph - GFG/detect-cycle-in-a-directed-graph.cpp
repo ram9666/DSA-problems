@@ -17,7 +17,7 @@ class Solution {
             {
                 if(dfs(it,vis,pathvis,adj)==true) return true;
             }
-            else if(pathvis[it]) return true;
+            else if(pathvis[it]==1) return true;
         }
         pathvis[node]=0;
         return false;
