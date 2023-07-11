@@ -14,14 +14,15 @@ public:
             ans.push_back(sum);
             return ;
         }
-        func(ind+1,sum+arr[ind],arr);
         func(ind+1,sum,arr);
+        func(ind+1,sum+arr[ind],arr);
+        
     }
     vector<int> subsetSums(vector<int> arr, int N)
     {
         // Write Your Code here
        func(0,0,arr);
-       sort(a)
+       
        return ans;
     }
 };
