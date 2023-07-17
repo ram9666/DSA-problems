@@ -142,7 +142,7 @@ Node *deleteNode(Node *root, int x) {
          {
              if(root->left!=NULL and root->left->data==x)
              {
-                 root->left = func(root);
+                 root->left = func(root->left);
                  return temp;
              }
              else root=root->left;
@@ -151,7 +151,7 @@ Node *deleteNode(Node *root, int x) {
          {
              if(root->right!=NULL and root->right->data==x)
              {
-                 root->right = func(root);
+                 root->right = func(root->right);
                  return temp;
              }
              else root = root->right;
