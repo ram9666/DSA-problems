@@ -1,62 +1,79 @@
-#include <iostream>
-#include<bits/stdc++.h>
+//{ Driver Code Starts
+#include <bits/stdc++.h>
 using namespace std;
-static bool comp(pair<int,int>&a,pair<int,int>&b){
-    if(a.first==b.first) return a.second<b.second;
-    return a.first>b.first;
-}
-vector<int> func(int arr[],int n)
-{
-    vector<int>ans;
-    unordered_map<int,int>mp;
-    for(int i=0;i<n;i++)
-    {
-        mp[arr[i]]++;
-    }
-    vector<pair<int,int>>v;
-    for(auto x : mp)
-    {
-        v.push_back({x.second,x.first});
-    }
-    sort(v.begin(),v.end(),comp);
+
+
+
+// } Driver Code Ends
+class Solution{
+    public:
+    //Complete this function
+    //Function to sort the array according to frequency of elements.
     
-    
-    for(auto x: v){
-        int num = x.second;
-        int count = x.first;
-        while(count--)
+    static bool comp(pair<int,int>&a,pair<int,int>&b)
+    {
+        if(a.first==b.first) return a.second<b.second;
+        return a.first>b.first;
+    }
+    vector<int> sortByFreq(int arr[],int n)
+    {
+        //Your code here
+        unordered_map<int,int>mp;
+        for(int i=0;i<n;i++)
         {
-            ans.push_back(num);
+            mp[arr[i]]++;
+        }
+        vector<pair<int,int>>v;
+        
+        for(int i=0;i<n;i++)
+        {
+            v.push_back({mp[arr[i]],arr[i]});
             
         }
+        
+        sort(v.begin(),v.end(),comp);
+        
+        vector<int>ans;
+        for(int i=0;i<n;i++)
+        {
+            ans.push_back(v[i].second);
+        }
+        return ans;
+        
+        
     }
-    return ans;
-    
-}
+};
+
+//{ Driver Code Starts.
 
 int main() {
-	//code
-	int N;
-	cin>>N;
-	while(N--){
-	    int n;
-	    cin>>n;
-	    int arr[n];
-	    vector<int>v;
-	    for(int i=0;i<n;i++)
-	    {
-	        cin>>arr[i];
-	    }
-	    v = func(arr,n);
-	    for(int i=0;i<n;i++){
-	        cout<<v[i]<<" ";
-
-	    }
-	    cout<<endl;
+	
+	
+	int t;
+	cin >> t;
+	
+	
+	while(t--){
 	    
+	    
+	    int n;
+	    cin >> n;
+	    
+	    int a[n+1];
+	    
+	    for(int i = 0;i<n;i++){
+	        cin >> a[i];
+	    }
+	    Solution obj;
+	    vector<int> v;
+	    v = obj.sortByFreq(a,n);
+	    for(int i:v)
+	        cout<<i<<" ";
+	    cout << endl;
 	}
 	
-	
 	return 0;
-	
 }
+
+
+// } Driver Code Ends
