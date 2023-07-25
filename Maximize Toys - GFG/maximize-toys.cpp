@@ -23,7 +23,7 @@ public:
                 ans++;
                 k-=arr[i];
             }
-            else break;
+            else return i;
         }
         return ans;
     }
